@@ -3,13 +3,11 @@ package org.example.pp_springboot.dao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.example.pp_springboot.entity.User;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-@Component
 public class UserDAOImpl implements UserDAO {
 
     private EntityManager entityManager;

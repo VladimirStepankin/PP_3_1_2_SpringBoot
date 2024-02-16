@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+
 public class UserController {
+
+    private static final String REDIRECT_TO_USERS = "redirect:/users";
     private final UserService userService;
 
     @Autowired
@@ -21,7 +24,7 @@ public class UserController {
 
     @GetMapping("/")
     public String mainPage() {
-        return "mainPage";
+        return "index";
     }
 
     @GetMapping("/users")
@@ -38,7 +41,7 @@ public class UserController {
     @PostMapping("/add_user")
     public String addUser(@ModelAttribute("user") User user) {
         userService.addUser(user);
-        return "redirect:/users";
+        return REDIRECT_TO_USERS;
     }
 
     @GetMapping("show_single_user")
@@ -56,12 +59,12 @@ public class UserController {
     @PostMapping("/edit_user")
     public String update(@ModelAttribute("user") User user) {
         userService.updateUser(user);
-        return "redirect:/users";
+        return REDIRECT_TO_USERS;
     }
 
     @GetMapping(value = "/delete_user")
     public String deleteUserById(@RequestParam(name = "id") Long id) {
         userService.removeUserById(id);
-        return "redirect:/users";
+        return REDIRECT_TO_USERS;
     }
 }
